@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Main">
+      <UniqueIdentifier>{b5b47503-93c6-4dee-a891-183e2f596850}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\System">
+      <UniqueIdentifier>{72925357-8d67-4e70-a40b-ebbf86e7e747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\System">
+      <UniqueIdentifier>{b2a91ea1-2ac7-4bcf-9b97-cc3a11792324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Constant">
+      <UniqueIdentifier>{f04b05ed-6856-41d0-b306-557c48496240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Player">
+      <UniqueIdentifier>{88d4b198-b7c2-44fa-ac64-2e61ddcc6276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Player">
+      <UniqueIdentifier>{f778434c-a4b6-418b-9957-b7101b075180}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Background">
+      <UniqueIdentifier>{b1046251-122c-4fcd-88ce-a7283262292b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Background">
+      <UniqueIdentifier>{a47c0eee-fd4c-4b47-8b92-0cd2797e641d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="windowPreference.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="loopProcess.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="inputProcess.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>ソース ファイル\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="background.cpp">
+      <Filter>ソース ファイル\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="item.cpp">
+      <Filter>ソース ファイル\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="color.cpp">
+      <Filter>ソース ファイル\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="random.cpp">
+      <Filter>ソース ファイル\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="card.cpp">
+      <Filter>ソース ファイル\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="watch.cpp">
+      <Filter>ソース ファイル\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="char.cpp">
+      <Filter>ソース ファイル\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="roap.cpp">
+      <Filter>ソース ファイル\Background</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="windowPreference.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="loopProcess.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="inputProcess.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="constant.h">
+      <Filter>ヘッダー ファイル\Constant</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>ヘッダー ファイル\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="background.h">
+      <Filter>ヘッダー ファイル\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>ヘッダー ファイル\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="color.h">
+      <Filter>ヘッダー ファイル\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>ヘッダー ファイル\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="card.h">
+      <Filter>ヘッダー ファイル\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="watch.h">
+      <Filter>ヘッダー ファイル\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="char.h">
+      <Filter>ヘッダー ファイル\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="roap.h">
+      <Filter>ヘッダー ファイル\Background</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
