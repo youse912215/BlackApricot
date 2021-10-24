@@ -7,17 +7,18 @@ private:
 	int graph2; //プレイヤー2
 	int graph3; //プレイヤー3
 	int graph4; //プレイヤー4
-	int width; //横幅
-	int height; //縦幅
+	const int width; //横幅
+	const int height; //縦幅
 	int x1; //x座標
-	int x2; //x座標
+	const int x2; //x座標
 	int y1; //y座標
-	int y2; //y座標
+	const int y2; //y座標
 	double ex; //xの拡大率
 	double ey; //yの拡大率
 	double angle; //角度
 
 	void drawing_player();
+	void moving_process();
 
 public:
 	static int px; //プレイヤーx座標

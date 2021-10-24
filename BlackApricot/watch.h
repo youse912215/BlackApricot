@@ -11,10 +11,12 @@ private:
 	double height; //ウォッチの縦幅
 	double length; //針の長さ
 	double radians; //ラジアン
+	const int needle_size;
 
-	void drawing_watch();
+	void drawing();
 	void light_up();
-	void watch_flag_check();
+	void flag_check();
+	void rotate_needle();
 
 public:
 	static double watch_num; //ウォッチの時間（0～11,12時間分）
@@ -23,7 +25,7 @@ public:
 
 	Watch();
 	~Watch();
-	void watch_update();
-	void moving_watch();
-	double sliding_watch();
+	void update();
+	void moving();
+	double sliding();
 };

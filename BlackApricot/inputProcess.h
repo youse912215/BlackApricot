@@ -1,4 +1,5 @@
 #pragma once
+#include "color.h"
 
 class Input {
 
@@ -12,7 +13,7 @@ public:
 
 	Input();
 	void input_info();
-	void update();
+	void update(Color& cr);
 
 private:
 	int m_distance; //ˆÚ“®—Ê
@@ -23,7 +24,7 @@ private:
 	void light_action(const int& x_min, const int& x_max, const int& y_min, const int& y_max, const int& num);
 	void card_action(const int& x_min, const int& x_max, const int& y_min, const int& y_max);
 	void watch_action(const int& x_min, const int& x_max, const int& y_min, const int& y_max);
-	void roap_action(const int& x_min, const int& x_max, const int& y_min, const int& y_max);
+	void roap_action(const int& x_min, const int& x_max, const int& y_min, const int& y_max, Color& cr);
 	void roap_count();
 	void reset();
 };

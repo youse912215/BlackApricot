@@ -1,12 +1,16 @@
 #include "roap.h"
 #include "DxLib.h"
+#include <cmath>
 
 bool Roap::roap_flag = false;
 int Roap::roap_timer = 0;
 
-Roap::Roap() {
+Roap::Roap() :
+	roap_len(35), speed(10), fixed_value(40),
+	moving_value(fixed_value * fixed_value / speed - speed)
+{
 	rx = 450;
-	ry = 35 - moving_roap();
+	ry = roap_len;
 }
 
 Roap::~Roap() {
@@ -24,19 +28,22 @@ void Roap::drawing_roap() {
 /// </summary>
 /// <returns>時間による出力値</returns>
 int Roap::moving_roap() {
-	if (roap_flag && roap_timer < 40) roap_timer++;
-	if (roap_timer >= 40) {
-		roap_timer = 0;
-		roap_flag = false;
-	}
-
-	return ((roap_timer - 20) * (roap_timer - 20) - 400) / 10; //放物線を描く運動
+	int t = roap_timer * roap_timer; //ロープの変位
+	int f = fixed_value * fixed_value; //固定値
+	return (t - f) / speed + moving_value + roap_len; //放物線を描く運動
 }
 
 /// <summary>
 /// ロープを更新
 /// </summary>
 void Roap::roap_update() {
-	moving_roap();
+	if (roap_timer >= speed) {
+		roap_timer = 0;
+		roap_flag = false;
+	}
 	drawing_roap();
+
+	if (!roap_flag) return;
+	if (roap_timer < speed) roap_timer++;
+	ry = moving_roap();
 }

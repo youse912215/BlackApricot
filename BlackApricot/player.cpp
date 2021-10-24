@@ -8,21 +8,12 @@ int Player::py = 200;
 int Player::graph = 1;
 bool Player::reverse = false;
 
-Player::Player() {
-	width = 128;
-	height = 256;
+Player::Player() : angle(0.0), width(128), height(256), x2 (width / 2), y2(height / 2) {
 	graph1 = LoadGraph("Source/Charactor/apricot_pr1.png");
 	graph2 = LoadGraph("Source/Charactor/apricot_pr2.png");
 	graph3 = LoadGraph("Source/Charactor/apricot_pr3.png");
 	graph4 = LoadGraph("Source/Charactor/apricot_pr4.png");
 	player = graph1;
-	x1 = px + width / 2;
-	x2 = width / 2;
-	y1 = py + height / 2;
-	y2 = height / 2;
-	ex = 1.0 - Input::mx;
-	ey = 1.0 - Input::my;
-	angle = 0.0;
 }
 
 Player::~Player() {
@@ -61,7 +52,21 @@ void Player::drawing_player() {
 		graph = 1;
 		break;
 	}
+
+	moving_process(); //ˆÚ“®ˆ—
+	
 	DrawRotaGraph3(x1, y1, x2, y2,
 	               ex, ey, angle,
 	               player, true, reverse);
+}
+
+/// <summary>
+/// ˆÚ“®ˆ—
+/// </summary>
+void Player::moving_process()
+{
+	x1 = px + x2;
+	y1 = py + y2;
+	ex = 1.0 - Input::mx;
+	ey = 1.0 - Input::my;
 }

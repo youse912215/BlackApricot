@@ -34,15 +34,17 @@ void Input::input_info() {
 /// <summary>
 /// 入力更新
 /// </summary>
-void Input::update() {
-	moving_player();
+void Input::update(Color& cr) {
 	tips();
+
+	//if (Char::tips_flag) return;
+	moving_player();
 	light_action(65, 125, 65, 110, back_left);
 	light_action(440, 515, 65, 110, back_center);
 	light_action(545, 620, 65, 110, back_right);
 	watch_action(155, 305, 65, 110);
 	card_action(720, 880, 335, 410);
-	roap_action(365, 425, 65, 110);
+	roap_action(365, 425, 65, 110, cr);
 	reset();
 }
 
@@ -121,10 +123,10 @@ void Input::tips() {
 void Input::light_action(const int& x_min, const int& x_max, const int& y_min, const int& y_max, const int& num) {
 	if (Player::px >= x_min && Player::px <= x_max) {
 		if (Player::py >= y_min && Player::py <= y_max) {
-			if (keys[KEY_INPUT_F] && !oldkeys[KEY_INPUT_F] && !Item::light_action_flag[num]) {
+			if (keys[KEY_INPUT_T] && !oldkeys[KEY_INPUT_T] && !Item::light_action_flag[num]) {
 				Item::light_action_flag[num] = true;
 			}
-			else if (keys[KEY_INPUT_F] && !oldkeys[KEY_INPUT_F] && Item::light_action_flag[num]) {
+			else if (keys[KEY_INPUT_T] && !oldkeys[KEY_INPUT_T] && Item::light_action_flag[num]) {
 				Item::light_action_flag[num] = false;
 			}
 		}
@@ -132,7 +134,7 @@ void Input::light_action(const int& x_min, const int& x_max, const int& y_min, c
 }
 
 /// <summary>
-/// 定められた範囲にいる時に、カードアクション（F）を可能にする
+/// 定められた範囲にいる時に、カードアクション（T）を可能にする
 /// </summary>
 /// <param name="x_min">x最小値</param>
 /// <param name="x_max">x最大値</param>
@@ -143,13 +145,13 @@ void Input::card_action(const int& x_min, const int& x_max, const int& y_min, co
 
 	if (Player::px >= x_min && Player::px <= x_max) {
 		if (Player::py >= y_min && Player::py <= y_max) {
-			if (keys[KEY_INPUT_F] && !oldkeys[KEY_INPUT_F] && Card::card_timer == 0) {
+			if (keys[KEY_INPUT_T] && !oldkeys[KEY_INPUT_T] && Card::card_timer == 0) {
 				timer_flag = true;
 				Card* card = new Card;
 				card->card_flag_check();
 				delete card;
 			}
-			else if (keys[KEY_INPUT_F] && !oldkeys[KEY_INPUT_F] && Card::card_timer >= 40) {
+			else if (keys[KEY_INPUT_T] && !oldkeys[KEY_INPUT_T] && Card::card_timer >= 40) {
 				timer_flag = false;
 			}
 		}
@@ -157,7 +159,7 @@ void Input::card_action(const int& x_min, const int& x_max, const int& y_min, co
 }
 
 /// <summary>
-/// 定められた範囲にいる時に、ウォッチアクション（F）を可能にする
+/// 定められた範囲にいる時に、ウォッチアクション（T）を可能にする
 /// </summary>
 /// <param name="x_min">x最小値</param>
 /// <param name="x_max">x最大値</param>
@@ -166,9 +168,9 @@ void Input::card_action(const int& x_min, const int& x_max, const int& y_min, co
 void Input::watch_action(const int& x_min, const int& x_max, const int& y_min, const int& y_max) {
 	if (Player::px >= x_min && Player::px <= x_max) {
 		if (Player::py >= y_min && Player::py <= y_max) {
-			if (keys[KEY_INPUT_F] && !oldkeys[KEY_INPUT_F]) {
+			if (keys[KEY_INPUT_T] && !oldkeys[KEY_INPUT_T]) {
 				Watch* watch = new Watch;
-				watch->moving_watch();
+				watch->moving();
 				delete watch;
 			}
 		}
@@ -176,19 +178,17 @@ void Input::watch_action(const int& x_min, const int& x_max, const int& y_min, c
 }
 
 /// <summary>
-/// 定められた範囲にいる時に、ロープアクション（F）を可能にする
+/// 定められた範囲にいる時に、ロープアクション（T）を可能にする
 /// </summary>
 /// <param name="x_min">x最小値</param>
 /// <param name="x_max">x最大値</param>
 /// <param name="y_min">y最小値</param>
 /// <param name="y_max">y最大値</param>
-void Input::roap_action(const int& x_min, const int& x_max, const int& y_min, const int& y_max) {
+void Input::roap_action(const int& x_min, const int& x_max, const int& y_min, const int& y_max, Color& cr) {
 	if (Player::px >= x_min && Player::px <= x_max) {
 		if (Player::py >= y_min && Player::py <= y_max) {
-			if (keys[KEY_INPUT_F] && !oldkeys[KEY_INPUT_F] && !Roap::roap_flag) {
-				Color* card = new Color;
-				card->changing_color_flag(count);
-				delete card;
+			if (keys[KEY_INPUT_T] && !oldkeys[KEY_INPUT_T] && !Roap::roap_flag) {
+				cr.changing_color_flag(count);
 				roap_count(); //ロープを計数
 			}
 		}

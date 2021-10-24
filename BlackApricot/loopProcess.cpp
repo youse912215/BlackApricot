@@ -9,6 +9,7 @@
 #include "watch.h"
 #include "char.h"
 #include "roap.h"
+#include "color.h"
 #include <vector>
 
 using namespace std;
@@ -18,29 +19,33 @@ void loop_process() {
 	vector<Item> _light(PARTICLE_MAX); //パーティクル生成
 	vector<int> l_quantity(sizeof(enum lights)); //灯の個数
 
+	Color cr;
+	Input input;
+	Roap roap; //ロープ生成
+	Player player; //プレイヤー生成
+	Char _char; //文字生成
+	Background _bg; //背景生成
+	Card card; //カード生成
+	Watch watch; //時計生成
+
 	// ゲームループ
 	while (true) {
 		ClearDrawScreen(); //画面クリア
 
 		/* 入力処理　*/
-		Input* input = new Input;
-		input->input_info();
-		input->update();
+		input.input_info();
+		input.update(cr);
 		if (CheckHitKey(KEY_INPUT_ESCAPE)) break; //終了処理
-		delete input;
 
 		/* 更新処理　*/
-		/* 描画処理 */
-		Roap* roap = new Roap; //ロープ生成
-		roap->roap_update(); //ロープ更新
-		delete roap; //ロープ削除
+		roap.roap_update(); //ロープ更新
 
-		Background* _bg = new Background; //背景生成
-		_bg->drawing_bg(); //背景描画
+		
+		_bg.drawing_bg(); //背景描画
 
-		Watch* watch = new Watch; //時計生成
-		watch->watch_update(); //時計更新
-		delete watch; //時計削除
+		
+		watch.update(); //時計更新
+		
 
 		Item* item = new Item; //アイテム生成
 		item->drawing_update(); //他アイテム更新
@@ -58,23 +63,17 @@ void loop_process() {
 			}
 		}
 
-		Char* _char = new Char; //文字生成
-		_char->char_update(); //文字更新
-
-		Player* player = new Player; //プレイヤー生成
-		player->player_update(); //プレイヤー更新
-		delete player; //プレイヤー描画
-
+		_char.char_update(); //文字更新	
+		player.player_update(); //プレイヤー更新
 		item->drawing_tea_front(); //ティーセット更新
 		item->drawing_vase(); //壺更新
 		delete item; //全アイテム削除
 
-		Card* card = new Card; //カード生成
-		card->card_update(); //カード更新
-		delete card; //カード削除
+		
+		card.card_update(); //カード更新
+		
 
-		_bg->update(); //背景更新
-		delete _bg; //背景削除
+		_bg.update(); //背景更新
 
 		//パーティクル更新
 		if (Item::light_action_flag[front]) {
@@ -87,8 +86,7 @@ void loop_process() {
 			}
 		}
 
-		_char->drawing_message(); //メッセージ表示
-		delete _char; //文字削除
+		_char.drawing_message(); //メッセージ表示
 
 		if (Input::mx >= 0.60) break; //脱出して終了
 
